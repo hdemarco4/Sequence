@@ -14,7 +14,7 @@ import java.lang.Object.*;
 
  @author CS4250 (Fall 2017)
  @author Heather DeMarco
- @version 2.1.2
+ @version 2.1.3
  */
 
 public class Sequence {
@@ -49,24 +49,28 @@ public class Sequence {
      * @return the next number in the sequence
      */
     public Integer next(){
-        l = builtList.length;
-        l--;
+        l = builtList.length-1;
+        n = 0;
 
         if(index <= l){
             n = builtList[index];
         }
         else {
             if (d == 0)
-                n = 0;
+                ;
 
-            else if (d ==1)
+            else if (d == 1)
                 n = builtList[l];
 
             else{
-                for (int i = 1; i < d; i++) {
+                for (int i = 1; i <= d; i++) {
                     n += builtList[l];
                     l--;
                 }
+                for(int j = 0; j < builtList.length-1; j++) {
+                    builtList[j] = builtList[j+1];
+                }
+                builtList[builtList.length - 1] = n;
             }
         }
         index++;
